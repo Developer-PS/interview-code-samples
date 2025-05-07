@@ -1,0 +1,93 @@
+<div class="input-sections">
+  @for (input of inputs; track input; let i = $index) {
+  <div class="input-section">
+    <h2 class="input_section_title">
+      {{input.title}}
+    </h2>
+
+    <mat-form-field>
+      <mat-label>Shape:</mat-label>
+      <mat-select [(ngModel)]="input.shape" (change)="onShapeChange(i)">
+        @for (shape of shapeOptions; track $index) {
+          <mat-option [value]="shape">{{ shape | titlecase }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    @if(input.shape === 'round') {
+      <mat-form-field>
+        <mat-label>Diameter:</mat-label>
+        <input matInput type="number" [(ngModel)]="input.dimensions.diameter"
+          (input)="onDimensionChange(i)">
+      </mat-form-field>
+      @if(!hideHeight) {
+        <mat-form-field>
+          <mat-label>Height:</mat-label>
+          <input matInput type="number" [(ngModel)]="input.dimensions.height"
+            (input)="onDimensionChange(i)">
+        </mat-form-field>
+      }
+    }
+
+    @if(input.shape === 'rectangle') {
+      <mat-form-field>
+        <mat-label>Width:</mat-label>
+        <input matInput type="number" [(ngModel)]="input.dimensions.width"
+          (input)="onDimensionChange(i)">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Length:</mat-label>
+        <input matInput type="number" [(ngModel)]="input.dimensions.length"
+          (input)="onDimensionChange(i)">
+      </mat-form-field>
+      @if(!hideHeight) {
+        <mat-form-field>
+          <mat-label>Height:</mat-label>
+          <input matInput type="number" [(ngModel)]="input.dimensions.height"
+            (input)="onDimensionChange(i)">
+        </mat-form-field>
+      }
+    }
+
+    @if(input.shape === 'ring') {
+      <mat-form-field>
+        <mat-label>Outer Diameter:</mat-label>
+        <input matInput type="number" [(ngModel)]="input.dimensions.outerDiameter"
+          (input)="onDimensionChange(i)">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Inner Diameter:</mat-label>
+        <input matInput type="number" [(ngModel)]="input.dimensions.innerDiameter"
+          (input)="onDimensionChange(i)">
+      </mat-form-field>
+      @if(!hideHeight) {
+        <mat-form-field>
+          <mat-label>Height:</mat-label>
+          <input matInput type="number" [(ngModel)]="input.dimensions.height"
+            (input)="onDimensionChange(i)">
+        </mat-form-field>
+        }
+      }
+
+    @if(input.shape === 'custom') {
+      <mat-form-field>
+        <mat-label>Volume:</mat-label>
+        <input matInput type="number" [(ngModel)]="input.dimensions.volume"
+          (input)="onDimensionChange(i)">
+      </mat-form-field>
+    }
+
+    <img src="assets/cake-{{input.shape}}.png">
+
+    <p><strong>Calculated Volume:</strong> {{ input.volume.toFixed(2) }}</p>
+  </div>
+  }
+</div>
+
+<div class="output-section">
+  <mat-checkbox [(ngModel)]="hideHeight" (change)="calculateVolume(0); calculateVolume(1)">
+      Keep Same Height
+  </mat-checkbox>
+
+  <p><strong>Factor:</strong> {{ volumeFactor.toFixed(2) }}</p>
+</div>

@@ -1,0 +1,57 @@
+<div id="wrapper" cdkDropList (cdkDropListDropped)="drop($event)">
+  <table>
+  <tr id="header">
+    <th><p (click)='orderby("active")'>Active</p></th>
+    <th colspan="3"><p (click)='orderby("steamid")'>SteamID</p></th>
+    <th><p (click)='orderby("name")'>Name</p></th>
+    <th><p (click)='orderby("kda")'>KDA</p></th>
+    <th><p (click)='orderby("adr")'>ADR</p></th>
+    <th><p (click)='orderby("hltv_rating")'>HLTV Rating</p></th>
+    <th><p (click)='orderby("bias")'>Bias</p></th>
+    <th><p (click)='orderby("elo")' title="Elo = (KDA + HLTV Rating + Bias) * ADR">Elo</p></th>
+    <th><p></p></th>
+  </tr>
+  @for (player of players; track player) {
+    <tr [attr.team]="player.team" cdkDrag>
+      <td><input  style="transform: scale(2);" (change)="update_active_players()" [(ngModel)]="player.active" type="checkbox"></td>
+      <td class="img_container">
+        @if (isLoading(player.steamid)) {
+          <mat-spinner diameter="44"></mat-spinner>
+        } @else {
+          <img [src]="player.profilepicture">
+        }
+      </td>
+      <td><input [(ngModel)]="player.steamid"></td>
+      <td><button class="profilelink_btn" (click)="open_csstats(player)"><mat-icon>open_in_new</mat-icon></button></td>
+      <td><input style="width:150px" (change)="update_elo(player)" [(ngModel)]="player.name"></td>
+      <td><input style="width:60px" (change)="update_elo(player)" [(ngModel)]="player.kda"></td>
+      <td><input style="width:60px" (change)="update_elo(player)" [(ngModel)]="player.adr"></td>
+      <td><input style="width:60px" (change)="update_elo(player)" [(ngModel)]="player.hltv_rating"></td>
+      <td><input style="width:60px" (change)="update_elo(player)" [(ngModel)]="player.bias"></td>
+      <td><input style="width:60px" [(ngModel)]="player.elo"></td>
+      <td><div class="cdkdrag-handle" cdkDragHandle>
+        <mat-icon>drag_indicator</mat-icon>
+      </div></td>
+    </tr>
+  }
+  </table>
+
+  <div class="flex-row footer">
+    <button (click)="add_player()">Add Player</button>
+    <button (click)="update()">Update</button>
+    <button (click)="calculate_teams()">Matchmaking</button>
+    <button (click)="export_data()">Export</button>
+    <button (click)="import_data()">Import</button>
+    <p [textContent]="active_players"></p><p>players selected</p>
+  </div>
+
+  <div class="footer" id="teams">
+    <p>Teams:</p>
+    <p id="teams-team1"></p>
+    <p id="teams-team2"></p>
+    <p id="teams-diff"></p>
+    <button (click)='orderby("team")'>Sort</button>
+    <button (click)="copy_team_text()">Copy as Text</button>
+  </div>
+
+</div>

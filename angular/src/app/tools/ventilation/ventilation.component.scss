@@ -1,0 +1,153 @@
+.ventilation-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 30px;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: var(--md-sys-color-on-surface-variant);
+  }
+}
+
+.form-sections-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  mat-card {
+    flex: 1;
+  }
+}
+
+mat-card {
+  margin-bottom: 20px;
+
+  mat-card-content {
+    padding: 16px;
+
+    mat-form-field {
+      display: block;
+    }
+  }
+}
+
+.location-mode-toggle {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.action-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 36px;
+  margin-bottom: 20px;
+
+  mat-spinner {
+    margin: 0 auto;
+  }
+}
+
+.last-updated {
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.weather-data {
+  margin-top: 20px;
+  border-top: 1px dashed var(--md-sys-color-outline-variant);
+  padding-top: 20px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  button {
+    min-width: 150px;
+  }
+}
+
+.result-container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+
+  mat-card {
+    margin-bottom: 0;
+    text-align: center;
+
+    mat-card-header {
+      justify-content: center;
+    }
+
+    .result-text {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 16px 0;
+      padding: 8px 16px;
+      border-radius: 4px;
+      display: inline-block;
+
+      &.yes {
+        background-color: var(--ventilation-recommended);
+        color: var(--ventilation-recommended-text);
+      }
+
+      &.no {
+        background-color: var(--ventilation-not-recommended);
+        color: var(--ventilation-not-recommended-text);
+      }
+    }
+  }
+
+  .indoor, .outdoor, .difference {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 4px;
+    background-color: var(--md-sys-color-surface-container-lowest);
+    margin-bottom: 5px;
+
+    .value {
+      font-weight: bold;
+    }
+  }
+
+  .indoor, .outdoor {
+    background-color: var(--md-sys-color-surface-container);
+  }
+
+
+
+  .difference {
+    &.positive {
+      background-color:  var(--ventilation-recommended);
+      color:  var(--ventilation-recommended-text);
+    }
+
+    &.negative {
+      background-color:  var(--ventilation-not-recommended);
+      color:   var(--ventilation-not-recommended-text);
+    }
+  }
+
+  .result-description {
+    text-align: start;
+    padding: 0 12px;
+    margin-bottom: 20px;
+  }
+}

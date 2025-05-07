@@ -1,0 +1,16 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--md-sys-color-surface);
+  cursor: default;
+  user-select: none;
+}
+
+#text {
+  font-size: 18vw;
+  font-family: arial;
+  color: var(--md-sys-color-primary);
+  user-select: none;
+}

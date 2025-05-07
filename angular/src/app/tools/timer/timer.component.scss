@@ -1,0 +1,19 @@
+app-text-display {
+  display: block;
+  height: 50%;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  mat-form-field {
+    max-width: 500px;
+    align-self: center;
+  }
+}
+.timer-controls {
+  display: flex;
+  margin: auto;
+  * {
+    margin: 4px;
+  }
+}

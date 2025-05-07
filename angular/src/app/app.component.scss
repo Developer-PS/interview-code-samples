@@ -1,0 +1,40 @@
+#container {
+  display: grid;
+
+  grid-template-areas:
+    "header header header"
+    "navbar content settings-bar"
+    "footer footer footer";
+
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
+
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+header {
+  grid-area: header;
+}
+
+app-footer {
+  grid-area: footer;
+  background-color: aqua;
+}
+
+#content {
+  grid-area: content;
+  overflow: auto;
+}
+
+app-navbar {
+  grid-area: navbar;
+}
+
+app-header {
+  grid-area: header;
+}
+
+app-settings-bar {
+  grid-area: settings-bar;
+}

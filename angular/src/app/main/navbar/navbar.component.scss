@@ -1,0 +1,48 @@
+nav {
+  height: auto;
+  padding: 4px;
+  padding-left: 12px;
+  padding-top: 8px;
+
+  li {
+    list-style-type: none;
+  }
+  // li:hover {
+  //   color: blue;
+  // }
+  * {
+    width: 100%;
+  }
+  justify-content: start;
+}
+// a {
+//   text-decoration: none;
+//   color: inherit;
+// }
+mat-icon {
+  margin: 0 !important;
+}
+.sidebar-layout {
+  display: flex;
+  flex-direction: column; // Stack button container on top of drawer
+  height: 100%; // Full viewport height
+  background-color: var(--sidebar-background);
+  color: var(--sidebar-text-color);
+  #nav-toggle {
+    padding: 0;
+    margin: 8px;
+    mat-icon.open {
+      margin-left: auto !important;
+      margin-right: 23px !important;
+    }
+  }
+  // Drawer container takes the remaining height
+  mat-drawer-container {
+    flex: 1; // Allow drawer container to take the rest of the space
+    height: 100%;
+
+    mat-drawer {
+      width: 200px; // Set a fixed width for the drawer
+    }
+  }
+}

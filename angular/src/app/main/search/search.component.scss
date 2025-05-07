@@ -1,0 +1,47 @@
+.search-card {
+  background-color: var(--md-sys-color-primary);
+  border-radius: 16px;
+  padding: 12px;
+  margin: 12px;
+  margin-bottom: 24px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.search-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-card-title {
+  font-size: large;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+.search-card-description {
+  min-height: 20pt;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+mat-icon {
+  font-size: 18px;
+}
+
+mat-form-field {
+  margin: 12px;
+}
+
+.tags-field {
+  width: 10em;
+}
+
+.search-field {
+  width: 25em;
+}

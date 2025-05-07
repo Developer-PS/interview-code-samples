@@ -1,0 +1,34 @@
+<div class="sidebar-layout" [ngClass]="drawer.opened ? 'opened' : 'closed'">
+
+
+  @if (drawer.opened) { <button type="button" mat-button id="nav-toggle" (click)="drawer.toggle()">
+    <mat-icon class="open">arrow_forward</mat-icon></button>
+  } @else {
+  <button type="button" mat-mini-fab id="nav-toggle" (click)="drawer.toggle()">
+    <mat-icon class="open">settings</mat-icon>
+  </button>
+  }
+
+  <mat-drawer-container autosize>
+    <mat-drawer #drawer mode="side" opened="false">
+      <nav>
+        <ol>
+          <li>
+            <mat-slide-toggle class="wakelock" [(ngModel)]="wakelockService.active">
+              &nbsp; WakeLock
+            </mat-slide-toggle>
+          </li>
+          <li>
+            <app-theme-switcher></app-theme-switcher>
+          </li>
+          <li>
+            <a mat-button data-cc="show-preferencesModal">
+              <mat-icon>cookie</mat-icon>
+               Manage Cookies
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </mat-drawer>
+  </mat-drawer-container>
+</div>

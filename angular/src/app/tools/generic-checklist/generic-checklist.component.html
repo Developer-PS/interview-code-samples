@@ -1,0 +1,81 @@
+<span class="example-list-section">
+
+    <div class="controls">
+        <mat-slide-toggle
+            [(ngModel)]="hideSkipped"
+            (change)="save()">
+            Hide Skipped
+        </mat-slide-toggle>
+
+        <mat-slide-toggle
+            [(ngModel)]="autoSave"
+            (change)="save()">
+            AutoSave
+        </mat-slide-toggle>
+        
+        <button 
+            mat-raised-button
+            [disabled]="autoSave"
+            (click)="save()">
+            <mat-icon>save</mat-icon>
+            Save
+        </button>
+
+        <button 
+            mat-raised-button
+            (click)="reset()">
+            <mat-icon>replay</mat-icon>
+            Reset
+        </button>
+    </div>
+
+    <div id="list-wrapper">
+        <h1>{{ list_title }}</h1>
+        <div class="checklistitem-header" >
+            <div class="checklistitem-title">Task</div>
+            <div>Done</div>
+            <div>Skip</div>
+        </div>
+        <ng-container
+            *ngTemplateOutlet="Recursion; context:{ task: task().subtasks, idx: 0 }"
+        ></ng-container>
+        
+      
+      <ng-template #Recursion let-task="task" let-idx="idx"> 
+        <div class="subtaskcontainer">
+
+            @for (subtask of task; track subtask) {
+                @if(!(hideSkipped && subtask.skip)) {
+                    <div class="checklistitem" >
+                        <div class="checklistitem-title">
+                            <label id="{{$index}}">
+                                {{ subtask.name }}
+                            </label>
+                        </div>
+                        <div>
+                            <mat-checkbox 
+                            [indeterminate]="partiallyComplete(subtask)"
+                            [checked]="subtask.completed"
+                            [disabled]="subtask.skip"
+                            (change)="update($event.checked, subtask)"
+                            aria-labelledby="$index">
+                        </mat-checkbox>
+                    </div>
+                    <div>
+                        <mat-checkbox
+                        (change)="updateSkipBox($event.checked, subtask)"
+                        [checked]="subtask.skip"
+                        ></mat-checkbox>
+                    </div>
+                </div>
+                <ng-container *ngIf="subtask.subtasks && subtask.subtasks.length > 0">
+                    <ng-container
+                    *ngTemplateOutlet="Recursion; context:{ task: subtask.subtasks, idx: idx+1 }"
+                    ></ng-container>
+                </ng-container>
+            }
+        }
+    </div>
+    </ng-template>
+</div>
+</span>

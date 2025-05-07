@@ -1,0 +1,86 @@
+.example-section {
+  margin: 12px 0;
+}
+
+.example-margin {
+  margin: 0 12px;
+}
+
+.checklistitem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: flex-start;
+  border: 1px solid gray;
+  border-radius: 8px;
+  border-right: none;
+  padding: 0px 8px;
+}
+
+.checklistitem-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin: 0px 10px;
+}
+
+.checklistitem-header > *  {
+  margin: 5px;
+}
+
+.example-list-section {
+  padding: 20px;
+}
+
+.checklistitem-title {
+  flex-grow: 1;
+}
+
+.subtaskcontainer {
+  margin-left: 16px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  background-color: #ffffff22;
+  padding: 4px 0px 4px 2px;
+  border-right: none;
+}
+
+#list-wrapper > .subtaskcontainer {
+  margin-left: 0;
+  border-right: 1px solid grey;
+  padding: 4px 2px;
+}
+
+.checklistitem:nth-child(odd) {
+  background-color: #ffffff44;
+}
+
+.checklistitem:nth-child(even) {
+  background-color: #ffffff66;
+}
+
+#list-wrapper {
+  width: 40%;
+  margin: 20px;
+  padding: 10px 20px;
+  border: 2px solid grey;
+  border-radius: 15px;
+}
+
+.controls {
+  background-color: #ffffff22;
+  border: 1px solid grey;
+  border-radius: 10px;
+  width: auto;
+  padding: 8px;
+  display: inline-block;
+  margin-top: 15px;
+
+  * {
+    margin-right: 10px;
+  }
+}
+

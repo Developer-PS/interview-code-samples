@@ -1,0 +1,14 @@
+#wrapper {
+  background-color: #ffffff44;
+  border: 1px solid grey;
+  border-radius: 16px;
+  display: inline-flex;
+  flex-direction: row;
+  margin: 20px;
+
+  > * {
+    width: 500px;
+    height: 400px;
+    margin: 16px;
+  }
+}

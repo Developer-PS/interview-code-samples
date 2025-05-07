@@ -1,0 +1,52 @@
+nav {
+  height: auto;
+  padding: 4px;
+  padding-left: 16px;
+  padding-top: 16px;
+
+  li {
+    list-style-type: none;
+    padding-bottom: 8px;
+  }
+}
+
+.sidebar-layout {
+  display: flex;
+  flex-direction: column; // Stack button container on top of drawer
+  height: 100%; // Full viewport height
+  #nav-toggle {
+    padding: 0;
+    margin: 8px;
+    mat-icon.open {
+      margin-left: auto !important;
+      margin-right: 23px !important;
+    }
+  }
+  // Drawer container takes the remaining height
+  mat-drawer-container {
+    flex: 1; // Allow drawer container to take the rest of the space
+    height: 100%;
+
+    mat-drawer {
+      width: 200px; // Set a fixed width for the drawer
+    }
+  }
+
+  &.closed {
+    width: 0;
+
+    mat-drawer-container {
+      display: none;
+    }
+
+    #nav-toggle {
+      display: block;
+      position: relative;
+      left: -60px;
+
+      mat-icon {
+        margin: 0 !important;
+      }
+    }
+  }
+}

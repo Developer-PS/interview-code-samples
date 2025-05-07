@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  title: Recipe Manager API
+  description: API to manage recipes with details, editing, and deletion
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api
+    description: Local development server
+
+paths:
+  /recipes:
+    get:
+      summary: Get all recipes
+      description: Retrieve a list of all recipes
+      responses:
+        '200':
+          description: List of recipes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+
+    post:
+      summary: Create a new recipe
+      description: Add a new recipe to the database
+      requestBody:
+        description: Recipe to be created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+        required: true
+      responses:
+        '201':
+          description: Recipe created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+
+  /recipes/{id}:
+    get:
+      summary: Get a specific recipe by ID
+      description: Retrieve a specific recipe by its unique identifier
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the recipe to retrieve
+      responses:
+        '200':
+          description: Recipe details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '404':
+          description: Recipe not found
+
+    put:
+      summary: Edit a recipe
+      description: Update an existing recipe by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the recipe to update
+      requestBody:
+        description: Recipe details to be updated
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+        required: true
+      responses:
+        '200':
+          description: Recipe updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '404':
+          description: Recipe not found
+
+    delete:
+      summary: Delete a recipe
+      description: Delete a recipe by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the recipe to delete
+      responses:
+        '200':
+          description: Recipe deleted successfully
+        '404':
+          description: Recipe not found
+
+components:
+  schemas:
+    Recipe:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the recipe
+        title:
+          type: string
+          description: The title of the recipe
+        description:
+          type: string
+          description: A description of the recipe
+        ingredients:
+          type: array
+          items:
+            type: string
+          description: List of ingredients used in the recipe
+        steps:
+          type: array
+          items:
+            type: string
+          description: List of steps for preparing the recipe
+        prepTimeMinutes:
+          type: integer
+          description: Time in minutes required for preparation
+        cookTimeMinutes:
+          type: integer
+          description: Time in minutes required for cooking
+        servings:
+          type: integer
+          description: Number of servings this recipe makes
+        imageUrl:
+          type: string
+          description: URL of the recipe's image
+      required:
+        - title
+        - ingredients
+        - steps

@@ -1,0 +1,32 @@
+<div id="qrcodewrapper">
+  <mat-form-field class="example-full-width">
+    <mat-label>QR Code Content</mat-label>
+    <textarea 
+    matInput 
+    rows="4"
+    placeholder="https://www.google.com/"
+    [(ngModel)]="qrCodeData"
+    (input)="update()"></textarea>
+  </mat-form-field>
+  <div id="controls">
+    <button mat-raised-button (click)="copyImageToClipboard()">
+      <mat-icon>image</mat-icon>
+      Copy Image
+    </button>
+
+    <button mat-raised-button (click)="copyPageUrlToClipboard()">
+      <mat-icon>link</mat-icon>
+      Copy Page URL
+    </button>
+    
+    <button 
+      mat-raised-button
+      disabled
+      disabledInteractive
+      matTooltip="This will be added in a future update!">
+      <mat-icon>link</mat-icon>
+      Copy Image Link
+    </button>
+  </div>
+  <img id="qrcode">
+</div>

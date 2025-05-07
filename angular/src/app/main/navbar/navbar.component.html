@@ -1,0 +1,29 @@
+<div class="sidebar-layout">
+  <button type="button" mat-button id="nav-toggle" (click)="drawer.toggle()">
+
+
+    @if (drawer.opened) { <mat-icon class="open">arrow_back</mat-icon>
+    } @else { <mat-icon>menu</mat-icon>
+    }
+
+  </button>
+  <mat-drawer-container autosize>
+    <mat-drawer #drawer mode="side" opened="true">
+      <nav>
+        <a mat-flat-button routerLink="search">
+          Search <mat-icon>search</mat-icon>
+        </a>
+        <ol>
+          @for (item of items; track item.path) {
+          <li>
+            <a mat-button routerLink="/{{item.path}}">
+              {{$index + 1}}. {{ item.title }}
+
+            </a>
+          </li>
+          }
+        </ol>
+      </nav>
+    </mat-drawer>
+  </mat-drawer-container>
+</div>

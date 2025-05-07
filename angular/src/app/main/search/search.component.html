@@ -1,0 +1,39 @@
+<mat-form-field class="search-field">
+  <mat-label>Search</mat-label>
+  <input 
+    matInput 
+    [formControl]="search_formControl"
+    [matAutocomplete]="auto">
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    @for (option of autoCompleteSuggestions; track option) {
+      <mat-option [value]="option">{{option}}</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>
+<mat-form-field class="tags-field">
+  <mat-label>Filter by Tag</mat-label>
+  <mat-select [formControl]="tags_formControl" multiple>
+    @for (tag of tags; track tag) {
+      <mat-option [value]="tag">{{tag}}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+
+@for (item of items; track item.path) {
+  <a routerLink="/{{item.path}}">
+    <div class="search-card">
+      <div class="search-card-content">
+        <div class="search-card-title">
+          {{ item.title }}
+        </div>
+        <div class="search-card-description">
+          {{ item.data?.["description"] }}
+        </div>
+      </div>
+      <div>
+        <mat-icon title='Tags: {{item.data?.["tags"]}}'>style</mat-icon>
+      </div>
+    </div>
+  </a>
+}

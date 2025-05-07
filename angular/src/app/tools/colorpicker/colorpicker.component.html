@@ -1,0 +1,182 @@
+<div class="wrapper">
+  @if(apiAvailable) {
+  <div class="flex-column">
+    <div class="flex-column">
+      <button mat-stroked-button (click)="sampleColorFromScreen(abortController)">
+        <mat-icon>colorize</mat-icon>
+        Sample a Color on your Screen
+      </button>
+      <mat-form-field class="example-full-width">
+        <mat-label>Color:</mat-label>
+        <input readonly matInput placeholder="#000000" value="{{color}}">
+      </mat-form-field>
+      <div class="color_preview" [ngStyle]="{'background-color': color}"></div>
+    </div>
+    <div class="flex-column">
+
+      <p>Color Info:</p>
+      <mat-accordion [multi]="true">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            RGB Color
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="info_item">
+          <p class="info_header">Hex:</p>
+          <p class="info_field">{{ colord_cons(color).toHex() }}</p>
+        </div>
+
+        <div class="info_item">
+          <p class="info_header">RGB:</p>
+          <p class="info_field">{{ colord_cons(color).toRgb().r }}</p>
+          <p class="info_field">{{ colord_cons(color).toRgb().g }}</p>
+          <p class="info_field">{{ colord_cons(color).toRgb().b }}</p>
+        </div>
+
+        <div class="info_item">
+          <p class="info_header">RGB String:</p>
+          <p class="info_field">{{ colord_cons(color).toRgbString() }}</p>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            HSL Color
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="info_item">
+          <p class="info_header">HSL:</p>
+          <p class="info_field">{{ colord_cons(color).toHsl().h }}</p>
+          <p class="info_field">{{ colord_cons(color).toHsl().s }}</p>
+          <p class="info_field">{{ colord_cons(color).toHsl().l }}</p>
+        </div>
+
+        <div class="info_item">
+          <p class="info_header">HSL String:</p>
+          <p class="info_field">{{ colord_cons(color).toHslString() }}</p>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            HSV Color
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="info_item">
+          <p class="info_header">HSV:</p>
+          <p class="info_field">{{ colord_cons(color).toHsv().h }}</p>
+            <p class="info_field">{{ colord_cons(color).toHsv().s }}</p>
+            <p class="info_field">{{ colord_cons(color).toHsv().v }}</p>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              CSS Color Names
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info_item">
+            <p class="info_header">Closest CSS Name:</p>
+            <p class="info_field">{{ colord_cons(color).toName({ closest: true}) }}</p>
+          </div>
+          <div class="info_item">
+            <p class="info_header">Closest CSS Color:</p>
+            <p class="info_field">OOPS!</p>
+          </div>
+          <div class="info_item">
+            <p class="info_header">Closest CSS Match Percent:</p>
+            <p class="info_field">OOPS!</p>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              CYMK Color
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info_item">
+            <p class="info_header">CMYK:</p>
+            <p class="info_field">{{ colord_cons(color).toCmyk().c }}</p>
+            <p class="info_field">{{ colord_cons(color).toCmyk().m }}</p>
+            <p class="info_field">{{ colord_cons(color).toCmyk().y }}</p>
+            <p class="info_field">{{ colord_cons(color).toCmyk().k }}</p>
+          </div>
+
+          <div class="info_item">
+            <p class="info_header">CMYK String:</p>
+            <p class="info_field">{{ colord_cons(color).toCmykString() }}</p>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              HWB Color
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info_item">
+            <p class="info_header">HWB:</p>
+            <p class="info_field">{{ colord_cons(color).toHwb().h }}</p>
+            <p class="info_field">{{ colord_cons(color).toHwb().w }}</p>
+            <p class="info_field">{{ colord_cons(color).toHwb().b }}</p>
+          </div>
+
+          <div class="info_item">
+            <p class="info_header">HWB String:</p>
+            <p class="info_field">{{ colord_cons(color).toHwbString() }}</p>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              CIE LAB Color
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info_item">
+            <p class="info_header">CIE LAB:</p>
+            <p class="info_field">{{ colord_cons(color).toLab().l }}</p>
+            <p class="info_field">{{ colord_cons(color).toLab().a }}</p>
+            <p class="info_field">{{ colord_cons(color).toLab().b }}</p>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              CIE LCH Color
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info_item">
+            <p class="info_header">CIE LCH:</p>
+            <p class="info_field">{{ colord_cons(color).toLch().l }}</p>
+            <p class="info_field">{{ colord_cons(color).toLch().c }}</p>
+            <p class="info_field">{{ colord_cons(color).toLch().h }}</p>
+          </div>
+
+          <div class="info_item">
+            <p class="info_header">CIE LCH String:</p>
+            <p class="info_field">{{ colord_cons(color).toLchString() }}</p>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              CIE XYZ Color
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info_item">
+            <p class="info_header">CIE XYZ:</p>
+            <p class="info_field">{{ colord_cons(color).toXyz().x }}</p>
+            <p class="info_field">{{ colord_cons(color).toXyz().y }}</p>
+            <p class="info_field">{{ colord_cons(color).toXyz().z }}</p>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+    } @else {
+      <div>
+        Unfortunately the EyeDropper API is not available in your browser yet
+      <mat-icon>sentiment_dissatisfied</mat-icon>
+    </div>
+  }
+</div>

@@ -1,0 +1,26 @@
+<div class="controls">
+  <button (click)="toggleSound(canvas)">
+    {{ isPlaying ? 'Pause' : 'Play' }}
+  </button>
+
+  <label>
+    Volume{{ volume * 100 }}
+    <input type="range" min="0" max="1" step="0.01" [(ngModel)]="volume" (input)="onVolumeChange(volume)" />
+  </label>
+
+  <label>
+    Frequency: {{frequency}}(Hz)
+    <input type="range" min="100" max="2000" step="1" [(ngModel)]="frequency" (input)="onFrequencyChange(frequency)" />
+  </label>
+
+  <label>
+    Waveform
+    <select [(ngModel)]="waveform" (change)="onWaveformChange(waveform)">
+      @for (wave of waveforms; track wave) {
+        <option [value]="wave">{{ wave }}</option>
+      }
+    </select>
+  </label>
+</div>
+
+<canvas #canvas width="500" height="150"></canvas>

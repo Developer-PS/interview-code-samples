@@ -1,0 +1,21 @@
+<div id="wrapper">
+    <mat-form-field>
+        <mat-label>Encode</mat-label>
+        <textarea matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            [(ngModel)]="encoding"
+            (input)="encode()">
+        </textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Decode</mat-label>
+        <textarea matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        [(ngModel)]="decoding"
+        (input)="decode()">
+    </textarea>
+    </mat-form-field>
+</div>

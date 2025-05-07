@@ -1,0 +1,28 @@
+.input-sections {
+  display: flex;
+  margin: 1rem;
+}
+
+.input-section {
+  margin: 5px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.output-section {
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+}
+
+img {
+  margin: 5px;
+  width: 200px
+}
+
+.input_section_title {
+  margin: 5px;
+}

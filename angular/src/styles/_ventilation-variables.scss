@@ -1,0 +1,13 @@
+@mixin ventilation-dark-theme() {
+  --ventilation-recommended: #255D41;
+  --ventilation-recommended-text: #E6F4EA;
+  --ventilation-not-recommended: #8C3D3D;
+  --ventilation-not-recommended-text: #FFEBEE;
+}
+
+@mixin ventilation-light-theme() {
+  --ventilation-recommended: #C8E6C9;
+  --ventilation-recommended-text: #1B5E20;
+  --ventilation-not-recommended: #FFCDD2;
+  --ventilation-not-recommended-text: #B71C1C;
+}

@@ -1,0 +1,15 @@
+<app-text-display [text]="formatTime(remainingTime)"></app-text-display>
+
+<form [formGroup]="countdownForm">
+  <mat-form-field>
+    <mat-label>Enter countdown time (seconds)</mat-label>
+    <input matInput formControlName="time" placeholder="Ex. 30" type="number" min="1" [disabled]="isRunning">
+  </mat-form-field>
+
+  <div class="timer-controls">
+    <button mat-raised-button color="primary" (click)="startTimer()"
+      [disabled]="isRunning || countdownForm.invalid">Start</button>
+    <button mat-raised-button color="warn" (click)="stopTimer()" [disabled]="!isRunning">Stop</button>
+    <button mat-raised-button color="accent" (click)="resetTimer()">Reset</button>
+  </div>
+</form>

@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  max-width: 300px;
+
+  * {
+    margin: 5px;
+  }
+}
+
+.color_preview {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  height: 150px;
+}
+
+.info_item {
+  display: flex;
+  flex-direction: row;
+}
+
+.info_header {
+  padding: 5px;
+}
+
+.info_field {
+  background-color: var(--md-sys-color-surface-container-high);
+  padding: 5px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;;
+}
